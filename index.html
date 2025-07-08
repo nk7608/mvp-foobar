@@ -14,7 +14,6 @@
         </header>
 
         <main>
-            <!-- Section 1: User Input -->
             <section class="card">
                 <h2>1. Describe Your Task</h2>
                 <p>Enter a natural language command for the script you need.</p>
@@ -22,21 +21,17 @@
                 <button id="generate-btn">Generate Script</button>
             </section>
 
-            <!-- Section 2: Script Output -->
             <section class="card">
                 <h2>2. Generated Script</h2>
-                <!-- Timestamp: hidden by default -->
                 <p class="timestamp hidden" id="timestamp-container">
                     Generated on: <span id="timestamp-output"></span>
                 </p>
                 <div class="code-container">
-                    <!-- Copy Button: hidden by default -->
                     <button id="copy-btn" class="copy-button hidden">Copy</button>
                     <pre id="script-output"><code><!-- The generated script will appear here --></code></pre>
                 </div>
             </section>
 
-            <!-- Section 3: Deployment -->
             <section class="card">
                 <h2>3. Deploy</h2>
                 <p>Select the servers and deploy the script.</p>

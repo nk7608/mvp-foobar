@@ -8,7 +8,6 @@ exports.handler = async (event, context) => {
         return { statusCode: 405, body: 'Method Not Allowed' };
     }
 
-    // Get the API key from the secure environment variables
     const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
 
     if (!OPENROUTER_API_KEY) {
@@ -16,7 +15,6 @@ exports.handler = async (event, context) => {
     }
 
     try {
-        // Get the user's prompt from the body of the request from our frontend
         const { userPrompt } = JSON.parse(event.body);
 
         const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
@@ -24,11 +22,13 @@ exports.handler = async (event, context) => {
             headers: {
                 'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
                 'Content-Type': 'application/json',
+                'HTTP-Referer': 'http://localhost',
+                'X-Title': 'Foobar MVP'
             },
             body: JSON.stringify({
                 model: 'openrouter/cypher-alpha:free',
                 messages: [
-                    { role: 'system', content: 'You are an expert at writing bash scripts...' }, // Your system prompt
+                    { role: 'system', content: 'You are an expert at writing bash scripts. Generate a safe, well-commented bash script...' },
                     { role: 'user', content: userPrompt }
                 ]
             })
@@ -36,14 +36,17 @@ exports.handler = async (event, context) => {
 
         const data = await response.json();
 
-        // Send the response from OpenRouter back to our frontend
+        if (!response.ok) {
+            throw new Error(`OpenRouter API Error: ${JSON.stringify(data)}`);
+        }
+
         return {
             statusCode: 200,
             body: JSON.stringify(data),
         };
 
     } catch (error) {
-        console.error('Error:', error);
+        console.error('Proxy Error:', error);
         return {
             statusCode: 500,
             body: JSON.stringify({ error: error.message }),
