@@ -17,7 +17,7 @@ exports.handler = async (event, context) => {
     try {
         const { userPrompt } = JSON.parse(event.body);
 
-        const siteUrl = event.headers.origin || 'https://mvp-foobar-nayana.netlify.app';
+        const siteUrl = event.headers.origin || 'https://mvp-foobar-nk.netlify.app';
 
         const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
             method: 'POST',
