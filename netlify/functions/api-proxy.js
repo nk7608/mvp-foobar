@@ -17,12 +17,14 @@ exports.handler = async (event, context) => {
     try {
         const { userPrompt } = JSON.parse(event.body);
 
+        const siteUrl = event.headers.origin || 'https://mvp-foobar-nayana.netlify.app';
+
         const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
                 'Content-Type': 'application/json',
-                'HTTP-Referer': 'http://localhost',
+                    'HTTP-Referer': siteUrl,
                 'X-Title': 'Foobar MVP'
             },
             body: JSON.stringify({
