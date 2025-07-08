@@ -1,0 +1,118 @@
+/* --- Global Styles & Dark Theme --- */
+:root {
+    --bg-color: #121212;
+    --card-color: #1e1e1e;
+    --primary-text-color: #e0e0e0;
+    --secondary-text-color: #b0b0b0;
+    --border-color: #333333;
+    --accent-color: #4a90e2;
+    --accent-hover-color: #5aa1f2;
+    --code-bg-color: #0d0d0d;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--primary-text-color);
+    line-height: 1.6;
+}
+
+.container { max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
+header { text-align: center; margin-bottom: 2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; }
+h1 { font-size: 2.5rem; }
+h2 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+p { color: var(--secondary-text-color); margin-bottom: 1rem; }
+main { display: flex; flex-direction: column; gap: 2rem; }
+.card { background-color: var(--card-color); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.5rem; }
+
+/* --- Utility Class --- */
+.hidden {
+    display: none;
+}
+
+/* --- Interactive Elements --- */
+button {
+    background-color: var(--accent-color);
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+button:hover { background-color: var(--accent-hover-color); }
+
+textarea {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--code-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--primary-text-color);
+    font-family: inherit;
+    font-size: 1rem;
+    resize: vertical;
+}
+
+/* --- Code & Log Blocks --- */
+.code-container {
+    position: relative; /* Essential for positioning the copy button */
+    background-color: var(--code-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 1rem;
+    margin-top: 1rem;
+    min-height: 80px;
+}
+
+.log-container {
+    background-color: var(--code-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 1rem;
+    margin-top: 1rem;
+    min-height: 80px;
+}
+
+pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: 'SF Mono', 'Consolas', 'Menlo', monospace;
+    font-size: 0.9rem;
+    color: var(--primary-text-color);
+}
+
+/* --- New Styles for Timestamp & Copy Button --- */
+.timestamp {
+    font-size: 0.8rem;
+    color: var(--secondary-text-color);
+    margin-bottom: 0.25rem;
+    padding-left: 0.25rem;
+}
+
+.copy-button {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background-color: #3a3a3a;
+    color: var(--primary-text-color);
+    padding: 0.25rem 0.75rem;
+    font-size: 0.8rem;
+    font-weight: normal;
+    border: 1px solid var(--border-color);
+    width: auto; /* Override full-width default */
+    margin-top: 0;
+}
+.copy-button:hover { background-color: #4a4a4a; }
+
+/* --- Deployment Section --- */
+#server-list { display: flex; flex-direction: column; gap: 0.75rem; }
+.server-item { display: flex; align-items: center; gap: 0.5rem; background-color: #2a2a2a; padding: 0.75rem; border-radius: 6px; }
+.server-item input[type="checkbox"] { width: 18px; height: 18px; }
