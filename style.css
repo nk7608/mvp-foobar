@@ -107,7 +107,98 @@ pre {
 }
 .copy-button:hover { background-color: #4a4a4a; }
 
+/* --- NEW AND UPDATED STYLES FOR SERVER MANAGEMENT --- */
 
-#server-list { display: flex; flex-direction: column; gap: 0.75rem; }
-.server-item { display: flex; align-items: center; gap: 0.5rem; background-color: #2a2a2a; padding: 0.75rem; border-radius: 6px; }
-.server-item input[type="checkbox"] { width: 18px; height: 18px; }
+.form-group {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-group input[type="text"] {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--code-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--primary-text-color);
+    font-size: 1rem;
+}
+
+#server-list-container {
+    margin-top: 2rem;
+}
+
+#server-list-container h4 {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+#server-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.server-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* Increased gap for better spacing */
+    background-color: #2a2a2a;
+    padding: 0.75rem;
+    border-radius: 6px;
+}
+
+.server-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+}
+
+.server-item .server-info {
+    flex-grow: 1;
+}
+
+.server-item .server-name {
+    font-weight: bold;
+}
+
+.server-item .server-ip {
+    font-size: 0.8rem;
+    color: var(--secondary-text-color);
+}
+
+.status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.status-disconnected { background-color: #666; }
+.status-connecting { background-color: #f39c12; }
+.status-connected { background-color: #2ecc71; }
+
+.connect-btn {
+    background-color: #3a3a3a;
+    color: var(--primary-text-color);
+    padding: 0.3rem 0.8rem;
+    font-size: 0.8rem;
+    font-weight: normal;
+    border: 1px solid var(--border-color);
+    width: auto;
+    margin-top: 0;
+}
+
+.connect-btn:hover { background-color: #4a4a4a; }
+
+.connect-btn:disabled {
+    background-color: #222;
+    color: #555;
+    cursor: not-allowed;
+}

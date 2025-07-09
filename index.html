@@ -32,28 +32,33 @@
                 </div>
             </section>
 
-            <section class="card">
-                <h2>3. Deploy</h2>
-                <p>Select the servers and deploy the script.</p>
-                <div id="server-list">
-                    <div class="server-item">
-                        <input type="checkbox" id="server-01" value="server-01">
-                        <label for="server-01">prod-web-01</label>
-                    </div>
-                    <div class="server-item">
-                        <input type="checkbox" id="server-02" value="server-02">
-                        <label for="server-02">staging-db-alpha</label>
-                    </div>
-                    <div class="server-item">
-                        <input type="checkbox" id="server-03" value="server-03">
-                        <label for="server-03">dev-worker-24</label>
-                    </div>
-                </div>
-                <button id="deploy-btn">Deploy to Selected Servers</button>
-                <div class="log-container">
-                    <pre id="log-output"><code><!-- Deployment logs will appear here --></code></pre>
-                </div>
-            </section>
+           <section class="card">
+    <h2>3. Manage & Connect to Servers</h2>
+    <p>Add your servers by name and IP address, then connect to them.</p>
+    <div class="form-group">
+        <input type="text" id="server-name-input" placeholder="Server Name (e.g., prod-web-01)">
+        <input type="text" id="server-ip-input" placeholder="IP Address (e.g., 192.168.1.100)">
+    </div>
+    <button id="add-server-btn">Add Server</button>
+
+    <!-- This list will now be populated by JavaScript -->
+    <div id="server-list-container">
+        <h4>Available Servers</h4>
+        <div id="server-list">
+            <!-- Dynamically added servers will appear here -->
+        </div>
+    </div>
+</section>
+
+<!-- Section 4: Deployment -->
+<section class="card">
+    <h2>4. Deploy</h2>
+    <p>Select one or more connected servers and deploy the script.</p>
+    <button id="deploy-btn">Deploy to Selected Servers</button>
+    <div class="log-container">
+        <pre id="log-output"><code><!-- Deployment logs will appear here --></code></pre>
+    </div>
+</section>
         </main>
     </div>
 

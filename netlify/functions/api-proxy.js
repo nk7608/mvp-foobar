@@ -30,8 +30,13 @@ exports.handler = async (event, context) => {
             body: JSON.stringify({
                 model: 'openrouter/cypher-alpha:free',
                 messages: [
-                    { role: 'system', content: 'You are an expert at writing bash scripts. Generate a safe, well-commented bash script...' },
-                    { role: 'user', content: userPrompt }
+                     {
+    role: 'system', content: 'You are a silent bash script generation engine. Your sole purpose is to generate a complete, safe, and well-commented bash script based on the user\'s request. CRITICAL: Output ONLY the raw script code. DO NOT include any introductory text, explanations, summaries, key features, or usage guidelines. DO NOT wrap the code in markdown fences like ```bash. The output must be a valid bash script, starting with #!/bin/bash.'
+  },
+  {
+    role: 'user',
+    content: userPrompt
+  }
                 ]
             })
         });
