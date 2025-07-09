@@ -4,64 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Foobar: AI Script Generator</title>
+    <!-- 1. ADD PRISM CSS FOR SYNTAX HIGHLIGHTING -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <div class="container">
         <header>
-            <h1>Foobar: AI Script Generator</h1>
+            <!-- 2. ADD AN ID TO THE HEADING -->
+            <h1 id="main-heading">Foobar: AI Script Generator</h1>
         </header>
-
         <main>
+            <!-- ... (Section 1 is unchanged) ... -->
             <section class="card">
                 <h2>1. Describe Your Task</h2>
                 <p>Enter a natural language command for the script you need.</p>
-                <textarea id="prompt-input" rows="4" placeholder="e.g., Take a backup of system config on a Linux machine"></textarea>
+                <textarea id="prompt-input" rows="4" placeholder="e.g., Delete files in temporary folder (/tmp)"></textarea>
                 <button id="generate-btn">Generate Script</button>
             </section>
 
+        <!-- Section 2: Generated Script (Updated) -->
+<section class="card">
+    <h2>2. Generated Script</h2>
+    <p class="timestamp" id="timestamp-container">
+        Generated on: <span id="timestamp-output"></span>
+        <span class="edited-tag hidden" id="edited-tag"> (saved)</span>
+    </p>
+    <div class="code-container">
+        <!-- Control buttons -->
+        <button id="edit-btn" class="copy-button hidden">Edit</button>
+        <button id="save-btn" class="copy-button hidden">Save</button>
+        <button id="copy-btn" class="copy-button hidden">Copy</button>
+
+        <!-- The highlighted view -->
+        <pre id="script-output" class="language-bash"><code></code></pre>
+
+        <!-- The hidden editor -->
+        <textarea id="script-editor" class="script-editor-textarea hidden"></textarea>
+    </div>
+</section>
+
+            <!-- ... (Sections 3 and 4 are unchanged) ... -->
             <section class="card">
-                <h2>2. Generated Script</h2>
-                <p class="timestamp hidden" id="timestamp-container">
-                    Generated on: <span id="timestamp-output"></span>
-                </p>
-                <div class="code-container">
-                    <button id="copy-btn" class="copy-button hidden">Copy</button>
-                    <pre id="script-output"><code><!-- The generated script will appear here --></code></pre>
+                <h2>3. Manage & Connect to Servers</h2>
+                <p>Add your servers by name and IP address, then connect to them.</p>
+                <div class="form-group">
+                    <input type="text" id="server-name-input" placeholder="Server Name (e.g., prod-web-01)">
+                    <input type="text" id="server-ip-input" placeholder="IP Address (e.g., 192.168.1.100)">
+                </div>
+                <button id="add-server-btn">Add Server</button>
+                <div id="server-list-container">
+                    <h4>Available Servers</h4>
+                    <div id="server-list"></div>
                 </div>
             </section>
-
-           <section class="card">
-    <h2>3. Manage & Connect to Servers</h2>
-    <p>Add your servers by name and IP address, then connect to them.</p>
-    <div class="form-group">
-        <input type="text" id="server-name-input" placeholder="Server Name (e.g., prod-web-01)">
-        <input type="text" id="server-ip-input" placeholder="IP Address (e.g., 192.168.1.100)">
-    </div>
-    <button id="add-server-btn">Add Server</button>
-
-    <!-- This list will now be populated by JavaScript -->
-    <div id="server-list-container">
-        <h4>Available Servers</h4>
-        <div id="server-list">
-            <!-- Dynamically added servers will appear here -->
-        </div>
-    </div>
-</section>
-
-<!-- Section 4: Deployment -->
-<section class="card">
-    <h2>4. Deploy</h2>
-    <p>Select one or more connected servers and deploy the script.</p>
-    <button id="deploy-btn">Deploy to Selected Servers</button>
-    <div class="log-container">
-        <pre id="log-output"><code><!-- Deployment logs will appear here --></code></pre>
-    </div>
-</section>
+            <section class="card">
+                <h2>4. Deploy</h2>
+                <p>Select one or more connected servers and deploy the script.</p>
+                <button id="deploy-btn">Deploy to Selected Servers</button>
+                <div class="log-container">
+                    <pre id="log-output"><code></code></pre>
+                </div>
+            </section>
         </main>
     </div>
 
+    <!-- ADD PRISM JS AT THE END -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

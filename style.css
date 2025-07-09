@@ -82,6 +82,7 @@ pre {
     word-wrap: break-word;
     font-family: 'SF Mono', 'Consolas', 'Menlo', monospace;
     font-size: 0.9rem;
+    line-height: 1.5; /* Ensure consistent line height */
     color: var(--primary-text-color);
 }
 
@@ -104,17 +105,16 @@ pre {
     border: 1px solid var(--border-color);
     width: auto;
     margin-top: 0;
+    z-index: 10; /* Ensures button is on top of the editor */
 }
 .copy-button:hover { background-color: #4a4a4a; }
 
-/* --- NEW AND UPDATED STYLES FOR SERVER MANAGEMENT --- */
-
+/* --- SERVER MANAGEMENT STYLES --- */
 .form-group {
     display: flex;
     gap: 1rem;
     margin-bottom: 1rem;
 }
-
 .form-group input[type="text"] {
     width: 100%;
     padding: 0.75rem;
@@ -124,81 +124,81 @@ pre {
     color: var(--primary-text-color);
     font-size: 1rem;
 }
-
-#server-list-container {
-    margin-top: 2rem;
-}
-
-#server-list-container h4 {
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
-}
-
-#server-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-}
-
-.server-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem; /* Increased gap for better spacing */
-    background-color: #2a2a2a;
-    padding: 0.75rem;
-    border-radius: 6px;
-}
-
-.server-item input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
-}
-
-.server-item .server-info {
-    flex-grow: 1;
-}
-
-.server-item .server-name {
-    font-weight: bold;
-}
-
-.server-item .server-ip {
-    font-size: 0.8rem;
-    color: var(--secondary-text-color);
-}
-
-.status-indicator {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.8rem;
-}
-
-.status-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-}
-
+#server-list-container { margin-top: 2rem; }
+#server-list-container h4 { margin-bottom: 1rem; font-size: 1.2rem; }
+#server-list { display: flex; flex-direction: column; gap: 0.75rem; }
+.server-item { display: flex; align-items: center; gap: 1rem; background-color: #2a2a2a; padding: 0.75rem; border-radius: 6px; }
+.server-item input[type="checkbox"] { width: 18px; height: 18px; }
+.server-item .server-info { flex-grow: 1; }
+.server-item .server-name { font-weight: bold; }
+.server-item .server-ip { font-size: 0.8rem; color: var(--secondary-text-color); }
+.status-indicator { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; }
+.status-dot { width: 10px; height: 10px; border-radius: 50%; }
 .status-disconnected { background-color: #666; }
 .status-connecting { background-color: #f39c12; }
 .status-connected { background-color: #2ecc71; }
+.connect-btn { background-color: #3a3a3a; color: var(--primary-text-color); padding: 0.3rem 0.8rem; font-size: 0.8rem; font-weight: normal; border: 1px solid var(--border-color); width: auto; margin-top: 0; }
+.connect-btn:hover { background-color: #4a4a4a; }
+.connect-btn:disabled { background-color: #222; color: #555; cursor: not-allowed; }
 
-.connect-btn {
+/* --- DYNAMIC & EDIT/SAVE FEATURE STYLES --- */
+#main-heading {
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Base styles for Edit/Save buttons */
+#edit-btn, #save-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 6rem;
+    z-index: 10; /* Ensures button is on top of the editor */
     background-color: #3a3a3a;
     color: var(--primary-text-color);
-    padding: 0.3rem 0.8rem;
+    padding: 0.25rem 0.75rem;
     font-size: 0.8rem;
     font-weight: normal;
     border: 1px solid var(--border-color);
     width: auto;
     margin-top: 0;
 }
+#edit-btn:hover, #save-btn:hover { background-color: #4a4a4a; }
 
-.connect-btn:hover { background-color: #4a4a4a; }
+/* The auto-resizing textarea used as the script editor */
+.script-editor-textarea {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* height is set by JS */
+    padding: 1rem;
+    border-radius: 6px;
+    border: 1px solid var(--accent-color);
+    background-color: var(--code-bg-color);
+    color: var(--primary-text-color);
+    font-family: 'SF Mono', 'Consolas', 'Menlo', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5; /* Crucial for size calculation */
+    resize: none;
+    overflow-y: hidden; /* Hide scrollbar, as it resizes automatically */
+    box-sizing: border-box; /* Ensures padding is included in size calculation */
+}
 
-.connect-btn:disabled {
-    background-color: #222;
-    color: #555;
-    cursor: not-allowed;
+/* --- Styles for Versioning Tag --- */
+
+/* Base style for the status tag */
+.edited-tag {
+    font-style: italic;
+    font-size: 0.8rem;
+    margin-left: 5px;
+    font-weight: bold;
+}
+
+/* Color for the "editing" state */
+.status-editing {
+    color: #f39c12; /* A noticeable orange */
+}
+
+/* Color for the "saved" state */
+.status-saved {
+    color: #2ecc71; /* The success green */
 }
